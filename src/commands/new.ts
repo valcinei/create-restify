@@ -4,12 +4,13 @@
 
 module.exports = {
   name: 'new',
-  alias: ['w'],
+  alias: ['n'],
   run: async (toolbox: GluegunToolbox) => {
     const {
       parameters,
       template: { generate },
       print: {  success },
+      print: {  warning },
     } = toolbox
 
     const name = parameters.first
@@ -27,5 +28,9 @@ module.exports = {
     })
 
     success(`App ${name} generated sucess`)
+    warning(`cd ${name}`)
+    warning(`npm install`)
+    warning(`npm run dev`)
+    
   },
 }
