@@ -2,7 +2,6 @@
   "name": "create-restify",
   "version": "0.0.1",
   "description": "create-restify CLI",
-  "private": true,
   "bin": {
     "create-restify": "bin/create-restify"
   },
