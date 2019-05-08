@@ -1,6 +1,6 @@
 {
   "name": "create-restify",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "create-restify CLI",
   "bin": {
     "create-restify": "bin/create-restify"
@@ -9,7 +9,7 @@
     "format": "prettier --write **/*.{js,ts,tsx,json}",
     "lint": "tslint -p .",
     "compile": "tsc -p .",
-    "build": "yarn format && yarn lint && yarn compile",
+    "build": "yarn format && yarn lint && yarn compile && cp -R src/templates build",
     "test": "jest",
     "watch": "jest --watch",
     "snapupdate": "jest --updateSnapshot",
