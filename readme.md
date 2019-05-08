@@ -1,25 +1,24 @@
-# create-restify CLI
-
-A CLI for create-restify.
-
 ## Customizing your CLI
-
-Check out the documentation at https://github.com/infinitered/gluegun/tree/master/docs.
-
-## Publishing to NPM
-
-To package your CLI up for NPM, do this:
-
+Lib boilerplate Restify Project
+## Get started
 ```shell
-$ npm login
-$ npm whoami
-$ npm lint
-$ npm test
-(if typescript, run `npm run build` here)
-$ npm publish
+npm init restify myApp
+cd myApp
+npm run dev
 ```
 
+## Folder Structure
+```
+|-- src
+|   |-- Http
+|   |   `-- UserController.js
+|   |-- Models
+|   |   `-- User.js
+|   |-- index.js
+|   |-- routes.js
+|   `-- server.js
+`-- package.json
+```
 # License
-
 MIT - see LICENSE
 
