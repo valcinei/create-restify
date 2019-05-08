@@ -11,7 +11,8 @@ module.exports = {
       template: { generate },
       print: {  success },
       print: {  warning },
-      print: {  error }
+      print: {  error },
+      print: {  info }
     } = toolbox
 
     const name = parameters.first
@@ -51,15 +52,15 @@ module.exports = {
       target: `${name}/package.json`,
       props: { name },
     })
-
+    
+    info('Installing dependencies...')
     toolbox.system.run(`npm --prefix ${name} install`, { trim: true })
     .then((res)=>{
+      success(res)
       success(`App ${name} generated sucess`)
       warning(`cd ${name}`)
       warning(`npm run dev`)
     })
-    .catch((err)=> error(err))
-
-    
+    .catch((err)=> error(err))    
   },
 }
