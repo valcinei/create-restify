@@ -11,26 +11,55 @@ module.exports = {
       template: { generate },
       print: {  success },
       print: {  warning },
+      print: {  error }
     } = toolbox
 
     const name = parameters.first
 
     await generate({
-      template: 'server.ts.ejs',
+      template: 'index.ts.ejs',
       target: `${name}/src/index.js`,
       props: { name },
     })
 
+    await generate({
+      template: 'server.ts.ejs',
+      target: `${name}/src/server.js`,
+      props: { name },
+    })
+
+    await generate({
+      template: 'routes.ts.ejs',
+      target: `${name}/src/routes.js`,
+      props: { name },
+    })
+
+    await generate({
+      template: 'controller.ts.ejs',
+      target: `${name}/src/Http/Controllers/UserController.js`,
+      props: { name },
+    })
+
+    await generate({
+      template: 'model.ts.ejs',
+      target: `${name}/src/Models/User.js`,
+      props: { name },
+    })
+  
     await generate({
       template: 'package.json.ejs',
       target: `${name}/package.json`,
       props: { name },
     })
 
-    success(`App ${name} generated sucess`)
-    warning(`cd ${name}`)
-    warning(`npm install`)
-    warning(`npm run dev`)
+    toolbox.system.run(`npm --prefix ${name} install`, { trim: true })
+    .then((res)=>{
+      success(`App ${name} generated sucess`)
+      warning(`cd ${name}`)
+      warning(`npm run dev`)
+    })
+    .catch((err)=> error(err))
+
     
   },
 }

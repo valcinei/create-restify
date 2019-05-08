@@ -1,0 +1,7 @@
+
+const server = require('./server');
+const routes = require('./routes').call()
+
+server.listen(8080, function() {
+    console.log('%s listening at %s', server.name, server.url)
+});

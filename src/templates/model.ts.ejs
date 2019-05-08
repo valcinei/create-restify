@@ -1,3 +1,32 @@
+
+save = (user) => {
+  /*implments your persistent data here*/
+  return { message: "Save user", user: user}    
+}
+
+update = (user) => {
+  /*implments your persistent data here*/
+  return { message: "Update user", user: user}    
+}
+
+all = () => {
+  /*implments your persistent data here*/
+  return { message: "Get all user" }    
+}
+
+get = (id) => {
+  /*implments your persistent data here*/
+  return { message: "Find user by id", id: id }    
+}
+
+remove = (id) => {
+  /*implments your persistent data here*/
+  return { message: "Remove user by id:", id: id }    
+}
+
 module.exports = {
-  name: '<%= props.name %>'
+  save,
+  update,
+  all,
+  get  
 }

@@ -1,0 +1,38 @@
+
+const User = require('../../Models/User');
+
+get = (req, res, next) => {
+    /*implement your requests and response code here*/
+    let userId = req.params.id
+    res.send(User.get(userId))
+    next()
+}
+
+post = (req, res, next) => {
+    console.log(req.params)
+    /*implement your requests and response code here*/
+    let user = req.params
+    res.send(User.save(user))
+    next()
+}
+
+put = (req, res, next, data) => {
+    /*implement your requests and response code here*/
+    let user = req.params
+    res.send(User.update(user))
+    next()
+}
+
+del = (req, res, next) => {
+    /*implement your requests and response code here*/
+    let userId = req.params.id
+    res.send(User.remove(userId))
+    next()
+}
+
+module.exports ={
+    get,
+    post,
+    put,
+    del
+}

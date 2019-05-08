@@ -1,14 +1,30 @@
-var restify = require('restify');
+const restify = require('restify')
+const os = require('os')
 
-function respond(req, res, next) {
-  res.send('hello ' + req.params.name);
-  next();
-}
 
-var server = restify.createServer();
-server.get('/hello/:name', respond);
-server.head('/hello/:name', respond);
-
-server.listen(8080, function() {
-  console.log('%s listening at %s', server.name, server.url);
-});
+const server = restify.createServer();
+server.use(restify.plugins.bodyParser({
+    maxBodySize: 0,
+    mapParams: true,
+    mapFiles: false,
+    overrideParams: false,
+    multipartHandler: function(part) {
+        part.on('data', function(data) {
+          // do something with the multipart data
+        });
+    },
+   multipartFileHandler: function(part) {
+        part.on('data', function(data) {
+          // do something with the multipart file data
+        });
+    },
+    keepExtensions: false,
+    uploadDir: os.tmpdir(),
+    multiples: true,
+    hash: 'sha1',
+    rejectUnknown: true,
+    requestBodyOnGet: false,
+    reviver: undefined,
+    maxFieldsSize: 2 * 1024 * 1024
+ }))
+module.exports = server
